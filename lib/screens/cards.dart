@@ -46,7 +46,7 @@ class _CardsState extends State<Cards> {
                         'Indicator',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.blue[200],
+                          color: Colors.blue[400],
                         ),
                       ),
                     ],
@@ -104,7 +104,7 @@ class _CardsState extends State<Cards> {
                         'Indicator',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.blue[200],
+                          color: Colors.blue[400],
                         ),
                       ),
                     ],
@@ -162,7 +162,7 @@ class _CardsState extends State<Cards> {
                         'Indicator',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.blue[200],
+                          color: Colors.blue[400],
                         ),
                       ),
                     ],
