@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-
-main() => runApp(SmartFarming());
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:smart_farming/phone_verification.dart';
+main() => runApp(MaterialApp(
+  title: 'App',
+  home: SmartFarming(),
+));
 
 class SmartFarming extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         body: SafeArea(
           child: Container(
             margin: EdgeInsets.only(left: 20.0, right: 20.0),
             child: ListView(
               children: [
-                Image.asset(
-                  'assets/logoo.png',
-                  height: 380.0,
-                  width: 450.0,
+                Image(
+                  image: AssetImage('assets/logoo1.png'),
+                  fit: BoxFit.fitHeight,
+                  height: 300.0,
                 ),
                 Text(
                   'Sign in',
@@ -25,19 +28,26 @@ class SmartFarming extends StatelessWidget {
                   'Sign in using your phone number',
                   style: TextStyle(fontSize: 17.0, color: Colors.green[600]),
                 ),
-                Container(
-                  width: 10.0,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: "Phone Number",
+                    Container(
+                      width: 250.0,
+                      margin: EdgeInsets.only(top: 15.0),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: "Phone Number",
+                          enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green), borderRadius: BorderRadius.circular(20)),
+                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.blue), borderRadius: BorderRadius.circular(20)),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                
                 Container(
                     margin: EdgeInsets.only(
-                        left: 40.0, right: 40.0, top: 15.0, bottom: 5.0),
+                        left: 40.0, right: 40.0, top: 15.0),
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -50,7 +60,8 @@ class SmartFarming extends StatelessWidget {
                             primary: Colors.green[800]))),
                 Container(
                   alignment: Alignment.center,
-                  child: InkWell(
+                  child: TextButton(
+                      onPressed: () { },
                       child: Text(
                     'Sign in using email',
                     style: TextStyle(fontSize: 16.0, color: Colors.blue),
@@ -60,7 +71,7 @@ class SmartFarming extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
+
 }
