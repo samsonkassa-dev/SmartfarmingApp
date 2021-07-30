@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:smart_farming/phone_verification.dart';
+import 'package:smart_farming/screens/phone_verification.dart';
 main() => runApp(MaterialApp(
   title: 'App',
   home: SmartFarming(),
@@ -31,9 +31,10 @@ class SmartFarming extends StatelessWidget {
                     Container(
                       width: 250.0,
                       margin: EdgeInsets.only(top: 15.0),
-                      child: TextField(
+                      child: TextFormField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.phone),
                           labelText: "Phone Number",
                           enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green), borderRadius: BorderRadius.circular(20)),
                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.blue), borderRadius: BorderRadius.circular(20)),
