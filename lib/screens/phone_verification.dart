@@ -1,12 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:smart_farming/screens/dashboard.dart';
+// import 'package:otp_screen/otp_screen.dart';
 
 class PhoneVerification extends StatelessWidget {
+  Future<String> validateOtp(String otp) async {
+    await Future.delayed(Duration(milliseconds: 2000));
+    if (otp == "12345") {
+      return "";
+    } else {
+      return "The Otp is wrong";
+    }
+  }
+
+  void moveToNextScreen(context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Dashboard()));
+  }
+
+  // int _firstDigit;
+  // int _secondDigit;
+  // int _thirdDigit;
+  // int _fourthDigit;
+  // int _fifthDigit;
+
   @override
   Widget build(BuildContext context) {
+    final node = FocusScope.of(context);
     return Scaffold(
       appBar: AppBar(
           title: Text('Smart Farming'), backgroundColor: Colors.green[900]),
+      // body: OtpScreen(
+      //   otpLength: 5,
+      //   titleColor: Colors.green[900],
+      //   routeCallback: moveToNextScreen,
+      //   validateOtp: validateOtp,
+      //   title: "Verification code sent",
+      //   subTitle: "Enter the code sent to you",
+      // ),
       body: Container(
         margin: EdgeInsets.only(left: 25.0, right: 25.0),
         child: Column(
@@ -24,19 +54,107 @@ class PhoneVerification extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.phone_callback),
-                labelText: "Verification Code",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 3, color: Colors.green),
-                    borderRadius: BorderRadius.circular(20)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 3, color: Colors.blue),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                    SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                    
+                    SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                   
+                     SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                   
+                     SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                    
+                     SizedBox(
+                    width: 50.0,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 26.0),
+                      onChanged: (value){if(value.length == 1) node.nextFocus();},
+                      maxLength: 1,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        counterText: "",
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black))),
+                    )),
+                    
+              ],
             ),
+            // TextFormField(
+            //   keyboardType: TextInputType.number,
+            //   decoration: InputDecoration(
+            //     prefixIcon: Icon(Icons.phone_callback),
+            //     labelText: "Verification Code",
+            //     enabledBorder: OutlineInputBorder(
+            //         borderSide: BorderSide(width: 3, color: Colors.green),
+            //         borderRadius: BorderRadius.circular(20)),
+            //     focusedBorder: OutlineInputBorder(
+            //         borderSide: BorderSide(width: 3, color: Colors.blue),
+            //         borderRadius: BorderRadius.circular(20)),
+            //   ),
+            // ),
             SizedBox(
               height: 50.0,
             ),
