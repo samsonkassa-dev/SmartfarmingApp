@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_farming/screens/dashboard.dart';
+import 'package:smart_farming/screens/cards.dart';
 // import 'package:otp_screen/otp_screen.dart';
+import 'package:smart_farming/screens/dashboard.dart';
 
 class PhoneVerification extends StatelessWidget {
   Future<String> validateOtp(String otp) async {
@@ -14,7 +15,7 @@ class PhoneVerification extends StatelessWidget {
 
   void moveToNextScreen(context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
+        context, MaterialPageRoute(builder: (context) => Cards()));
   }
 
   // int _firstDigit;
