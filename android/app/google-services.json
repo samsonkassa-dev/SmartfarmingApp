@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "442604104525",
+    "project_id": "phone-verification-edbf5",
+    "storage_bucket": "phone-verification-edbf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442604104525:android:cac44456acc0de4416a504",
+        "android_client_info": {
+          "package_name": "com.example.smart_farming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442604104525-rgnpjentipjgjbm528a10c1bo7v75u3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_farming",
+            "certificate_hash": "70f0d13ee82e557684cb51cb245353e77b9d3b6c"
+          }
+        },
+        {
+          "client_id": "442604104525-8bdqb9jld2lbukl4ruuifks12dlpii64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA-kNEaY76y17zgBBwDOUnx1_k_xYTUkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442604104525-8bdqb9jld2lbukl4ruuifks12dlpii64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

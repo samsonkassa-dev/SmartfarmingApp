@@ -1,28 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_farming/screens/cards.dart';
 // import 'package:otp_screen/otp_screen.dart';
 import 'package:smart_farming/screens/dashboard.dart';
 
 class PhoneVerification extends StatelessWidget {
-  Future<String> validateOtp(String otp) async {
-    await Future.delayed(Duration(milliseconds: 2000));
-    if (otp == "12345") {
-      return "";
-    } else {
-      return "The Otp is wrong";
-    }
-  }
+  final otpController = TextEditingController();
 
   void moveToNextScreen(context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Cards()));
   }
-
-  // int _firstDigit;
-  // int _secondDigit;
-  // int _thirdDigit;
-  // int _fourthDigit;
-  // int _fifthDigit;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +41,7 @@ class PhoneVerification extends StatelessWidget {
                 SizedBox(
                     width: 50.0,
                     child: TextFormField(
+                      controller: otpController,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 26.0),
                       onChanged: (value) {
@@ -165,8 +154,7 @@ class PhoneVerification extends StatelessWidget {
                 height: 40.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Dashboard()));
+                    
                   },
                   child: Text(
                     'Verify',

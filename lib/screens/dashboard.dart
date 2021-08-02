@@ -7,6 +7,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () => Scaffold.of(context).openDrawer(),),
         title: Text(
           'Smart Farming'
         ),
