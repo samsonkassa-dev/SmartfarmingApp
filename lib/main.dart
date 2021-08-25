@@ -6,7 +6,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(
-  title: 'App',
+  title: 'Application',
   home: SmartFarming(),
   debugShowCheckedModeBanner: false,
 ));
