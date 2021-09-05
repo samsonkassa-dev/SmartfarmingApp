@@ -2,7 +2,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:smart_farming/dataprovider/sensor_data_provider.dart';
+import 'package:smart_farming/dataprovider/sensor.dart';
+import 'package:smart_farming/dataprovider/sensor_data.dart';
 import 'package:smart_farming/models/data_api.dart';
 
 import 'package:smart_farming/screens/sensor_screen.dart';
@@ -14,7 +15,7 @@ void main() {
   // await Firebase.initializeApp();
   runApp(MaterialApp(
     title: 'Application',
-    home: SensorDataProvider(),
+    home: SensorScreen(),
     debugShowCheckedModeBanner: false,
   ));
 }

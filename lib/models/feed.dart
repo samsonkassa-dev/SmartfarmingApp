@@ -23,7 +23,7 @@ class Feed {
     Map<String, dynamic> data = new Map<String, dynamic>();
     data['created_at'] = this.createdAt;
     data['entry_id'] = this.entryId;
-    data['field1'] = this.field1;
+    //data['field1'] = this.field1;
     //data['field2'] = this.field2;
     //data['field3'] = this.field3;
     return data;
