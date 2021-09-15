@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:smart_farming/models/data_api.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_farming/screens/pump_control.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class SensorDataProvider extends StatefulWidget {
@@ -65,10 +66,25 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
     super.initState();
   }
 
+  navigateToController() {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return PumpController();
+      },
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+            child: IconButton(
+                onPressed: navigateToController, icon: Icon(Icons.agriculture)),
+          )
+        ],
         title: Text("Test"),
       ),
       body: StreamBuilder(
