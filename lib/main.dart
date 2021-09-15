@@ -15,7 +15,7 @@ void main() {
   // await Firebase.initializeApp();
   runApp(MaterialApp(
     title: 'Application',
-    home: SensorScreen(),
+    home: SensorDataProvider(),
     debugShowCheckedModeBanner: false,
   ));
 }

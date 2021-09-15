@@ -19,7 +19,7 @@ class DataModelApi {
   late Channel channel;
   late List<Feed> feeds;
 
-  DataModelApi({required this.channel, required this.feeds});
+  //DataModelApi({required this.channel, required this.feeds});
 
   List<Object> get props => [channel, feeds];
 

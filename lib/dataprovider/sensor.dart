@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:smart_farming/models/data_api.dart';
 import 'package:http/http.dart' as http;
-import 'package:smart_farming/screens/card.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class SensorDataProvider extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
   bool isLoading = false;
   late DataModelApi dataModelApi;
 
-  Future fetchData() async {
+  Future<DataModelApi> fetchData() async {
     //Async function which handels Json parsing
     setState(() {
       isLoading = true;
@@ -35,47 +35,10 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
     print("test");
 
     if (response.statusCode == 200) {
-      // If server returns an OK response, parse the JSON.
-
-      dataModelApi = new DataModelApi.fromJson(jsonDecode(response.body));
-      print("Successfully fetched and parsed Sensor Data");
-
-      //Temperature
-
-      if (double.parse(dataModelApi.feeds[0].field1).toInt() >= 18 &&
-          double.parse(dataModelApi.feeds[0].field1).toInt() < 24) {
-        var str = {
-          'icon': 'assets/temperature.png',
-          'name': 'Temperature',
-          'value': '${double.parse(dataModelApi.feeds[0].field1).toInt()}°C',
-          'subText': 'Normal',
-          'color': '${normalTemp}',
-          'subColor': '${normalText}',
-        };
-        coins.add(str);
-      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() >= 24 &&
-          double.parse(dataModelApi.feeds[0].field3).toInt() <= 28) {
-        var str = {
-          'icon': 'assets/temperature.png',
-          'name': 'Temperature',
-          'value': '${double.parse(dataModelApi.feeds[0].field1).toInt()}°C',
-          'subText': 'Moderate',
-          'color': '${moderateTemp}',
-          'subColor': '${moderateText}',
-        };
-        coins.add(str);
-      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 28) {
-        var str = {
-          'icon': 'assets/temperature.png',
-          'name': 'Temperature',
-          'value': '${double.parse(dataModelApi.feeds[0].field1).toInt()}°C',
-          'subText': 'Critical',
-          'color': '${highTemp}',
-          'subColor': '${highText}',
-        };
-        coins.add(str);
-      }
+      dataModelApi = DataModelApi.fromJson(jsonDecode(response.body));
+      print(dataModelApi.feeds[0].field1);
     }
+    return dataModelApi;
   }
 
   //update data automatically
@@ -93,7 +56,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
     //loadData();
 
     //_userController = new StreamController();
-    //Timer.periodic(Duration(seconds: 1), (_) => loadData());
+    Timer.periodic(Duration(seconds: 10), (_) => loadData());
 
     // TODO: implement initState
     // fetchData().whenComplete(() {
@@ -110,7 +73,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
       ),
       body: StreamBuilder(
         stream: streamController.stream,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
+        builder: (context, AsyncSnapshot snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
               return Center(
@@ -123,20 +86,45 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
               );
               break;
             case ConnectionState.active:
-              return Center(
-                child: Text(
-                  "Active",
-                  //snapshot.data.f == null ? 'Null' : snapshot.data.fname,
-                  //style: Theme.of(context).textTheme.display1,
-                ),
+              return Column(
+                children: [
+                  cards(
+                      '${snapshot.data.feeds[0].field1}°C',
+                      Icon(
+                        WeatherIcons.thermometer,
+                        color: Colors.red[900],
+                        size: 35.0,
+                      ),
+                      'Temprature'),
+                  cards(
+                      'snapshot.data.feeds[0].field2',
+                      Icon(
+                        WeatherIcons.humidity,
+                        color: Colors.red[900],
+                        size: 35.0,
+                      ),
+                      'Humidity'),
+                ],
               );
+
+              // Center(
+              //   child: Text(
+              //       //"Active",
+              //       snapshot.data == null
+              //           ? 'Null'
+              //           : snapshot.data.feeds[0].field1
+              //       //style: Theme.of(context).textTheme.display1,
+              //       ),
+              // );
               break;
             case ConnectionState.done:
               print('Done is fucking here ${snapshot.data}');
               if (snapshot.hasData) {
                 return Center(
                   child: Text(
-                    snapshot.data.fname == null ? 'Null' : snapshot.data.fname,
+                    "TEstata",
+
+                    //snapshot.data.fname == null ? 'Null' : snapshot.data.fname,
                     style: Theme.of(context).textTheme.display1,
                   ),
                 );
@@ -213,6 +201,65 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
       //           );
       //         },
       //       ),
+    );
+  }
+
+  Widget cards(String data, Widget wi, String dataname) {
+    return Card(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  children: [
+                    wi,
+                    Icon(
+                      WeatherIcons.thermometer,
+                      color: Colors.red[900],
+                      size: 35.0,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      dataname,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  'Indicator',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blue[400],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            child: Text(
+              '$data°C',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 100,
+                fontWeight: FontWeight.w200,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
