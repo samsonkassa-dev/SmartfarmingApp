@@ -89,7 +89,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
               return Column(
                 children: [
                   cards(
-                      '${snapshot.data.feeds[0].field1}°C',
+                      '${snapshot.data.feeds[0].field1}°C'.toString(),
                       Icon(
                         WeatherIcons.thermometer,
                         color: Colors.red[900],
@@ -97,7 +97,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                       ),
                       'Temprature'),
                   cards(
-                      'snapshot.data.feeds[0].field2',
+                      '${snapshot.data.feeds[0].field2}'.toString(),
                       Icon(
                         WeatherIcons.humidity,
                         color: Colors.red[900],
