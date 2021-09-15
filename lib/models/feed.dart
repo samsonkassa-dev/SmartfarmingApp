@@ -15,7 +15,7 @@ class Feed {
     createdAt = json['created_at'];
     entryId = json['entry_id'];
     field1 = json['field1'];
-    //field2 = json['field2'];
+    field2 = json['field2'];
     //field3 = json['field3'];
   }
 

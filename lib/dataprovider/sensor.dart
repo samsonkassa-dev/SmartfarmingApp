@@ -17,7 +17,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
   GlobalKey<ScaffoldState> globalKey = new GlobalKey<ScaffoldState>();
 
   String url =
-      "https://api.thingspeak.com/channels/1476026/fields/1.json?api_key=Y86I2FMYYUQQ7O7Z&results=1";
+      "https://api.thingspeak.com/channels/1476026/feeds.json?api_key=Y86I2FMYYUQQ7O7Z&results=1";
 
   bool isLoading = false;
   late DataModelApi dataModelApi;
@@ -97,8 +97,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                       ),
                       'Temprature'),
                   cards(
-                    'test',
-                      //'${snapshot.data.feeds[0].field2}'.toString(),
+                      '${snapshot.data.feeds[0].field2}'.toString(),
                       Icon(
                         WeatherIcons.humidity,
                         color: Colors.red[900],
@@ -222,7 +221,6 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                 Row(
                   children: [
                     wi,
-                    
                     SizedBox(width: 10),
                     Text(
                       dataname,
