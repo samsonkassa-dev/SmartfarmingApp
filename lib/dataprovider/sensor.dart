@@ -97,7 +97,8 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                       ),
                       'Temprature'),
                   cards(
-                      '${snapshot.data.feeds[0].field2}'.toString(),
+                    'test',
+                      //'${snapshot.data.feeds[0].field2}'.toString(),
                       Icon(
                         WeatherIcons.humidity,
                         color: Colors.red[900],
@@ -221,11 +222,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                 Row(
                   children: [
                     wi,
-                    Icon(
-                      WeatherIcons.thermometer,
-                      color: Colors.red[900],
-                      size: 35.0,
-                    ),
+                    
                     SizedBox(width: 10),
                     Text(
                       dataname,
@@ -249,7 +246,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
             width: MediaQuery.of(context).size.width,
             height: 150,
             child: Text(
-              '$data°C',
+              data,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.red,
