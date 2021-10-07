@@ -4,23 +4,21 @@ import 'package:http/http.dart' as http;
 class PumpController extends StatefulWidget {
   @override
   _PumpControllerState createState() => _PumpControllerState();
-}
+} 
 
 class _PumpControllerState extends State<PumpController> {
-  String onurl =
-      "https://api.thingspeak.com/update?api_key=9SO5VUH8S9EYIE04&field1=1";
-  String offurl =
-      "https://api.thingspeak.com/update?api_key=9SO5VUH8S9EYIE04&field1=0";
+  String onurl = "http://192.168.43.224:4000/channel/turnpump/Newchannel2/1";
+  String offurl = "http://192.168.43.224:4000/channel/turnpump/Newchannel2/0";
 
   turnOnPump() async {
-    final response = await http.get(Uri.parse(onurl));
+    final response = await http.put(Uri.parse(onurl));
 
     if (response.statusCode == 200) {
     } else {}
   }
 
   turnOffPump() async {
-    final response = await http.get(Uri.parse(offurl));
+    final response = await http.put(Uri.parse(offurl));
     if (response.statusCode == 200) {
     } else {}
   }

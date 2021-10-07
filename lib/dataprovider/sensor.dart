@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:smart_farming/models/channel.dart';
+import 'package:smart_farming/models/channels.dart';
 import 'package:smart_farming/models/data_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_farming/screens/pump_control.dart';
@@ -17,29 +19,44 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
 
   GlobalKey<ScaffoldState> globalKey = new GlobalKey<ScaffoldState>();
 
-  String url =
-      "https://api.thingspeak.com/channels/1476026/feeds.json?api_key=Y86I2FMYYUQQ7O7Z&results=1";
+  String url = 'http://192.168.43.224:4000/channel/Newchannel2';
 
   bool isLoading = false;
   late DataModelApi dataModelApi;
+  late Channels channels;
 
-  Future<DataModelApi> fetchData() async {
+  Future fetchData() async {
     //Async function which handels Json parsing
     setState(() {
       isLoading = true;
     });
-
+    print("test");
     final response = await http.get(Uri.parse(url));
     setState(() {
       isLoading = false;
     });
-    print("test");
-
+    print(response);
+    List data = [];
     if (response.statusCode == 200) {
-      dataModelApi = DataModelApi.fromJson(jsonDecode(response.body));
-      print(dataModelApi.feeds[0].field1);
+      //final r = jsonDecode(response.body);
+      channels = Channels.fromJson(jsonDecode(response.body));
+      List x = [];
+      List v = [];
+      //x.add();
+      // to be setted
+      // channels.field1[channels.field1.length - 1]["val"]);
+      //Map f2 = channels.field1[channels.field1.length - 1];
+      //Map f3 = channels.field1[channels.field1.length - 1];
+
+      //print(xx.);
+
+      //.map((e) => {v.add(e.val)});
+      //print(xx);
+
+      //print(r);
     }
-    return dataModelApi;
+
+    return channels;
   }
 
   //update data automatically
@@ -87,6 +104,14 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
         ],
         title: Text("Test"),
       ),
+      // body: Container(
+      //   child: TextButton(
+      //     child: Text("test"),
+      //     onPressed: () {
+      //       fetchData();
+      //     },
+      //   ),
+      // ),
       body: StreamBuilder(
         stream: streamController.stream,
         builder: (context, AsyncSnapshot snapshot) {
@@ -105,7 +130,8 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
               return Column(
                 children: [
                   cards(
-                      '${snapshot.data.feeds[0].field1}°C'.toString(),
+                      '${snapshot.data.field1[channels.field1.length - 1]["val"]}°C'
+                          .toString(),
                       Icon(
                         WeatherIcons.thermometer,
                         color: Colors.red[900],
@@ -113,7 +139,9 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
                       ),
                       'Temprature'),
                   cards(
-                      '${snapshot.data.feeds[0].field2}'.toString(),
+                      //'',
+                      '${snapshot.data.field3[channels.field3.length - 1]["val"]}'
+                          .toString(),
                       Icon(
                         WeatherIcons.humidity,
                         color: Colors.red[900],
@@ -154,7 +182,7 @@ class _SensorDataProviderState extends State<SensorDataProvider> {
           return Text('Non in Switch');
         },
       ),
-      //),
+      // ),
       // stream: streamController.stream,
       // builder: (
       //   BuildContext context,

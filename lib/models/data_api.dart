@@ -16,6 +16,7 @@ List types = ["recieved", "sent"];
 List coins = [];
 
 class DataModelApi {
+  
   late Channel channel;
   late List<Feed> feeds;
 

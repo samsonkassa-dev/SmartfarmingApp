@@ -1,16 +1,16 @@
 // import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 // import 'package:smart_farming/screens/dashboard.dart';
 // import 'package:smart_farming/screens/phone_verification.dart';
 
 // enum MobileVerficationState { SHOW_MOBILE_FORM_STATE, SHOW_OTP_FORM_STATE }
 
-// class LoginScreen extends StatefulWidget {
-//   @override
-//   _LoginScreenState createState() => _LoginScreenState();
-// }
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
 
-// class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
 //   MobileVerficationState currentState =
 //       MobileVerficationState.SHOW_MOBILE_FORM_STATE;
 
@@ -45,94 +45,94 @@
 //     }
 //   }
 
-//   getMobileFormWidget(context) {
-//     return ListView(
-//         padding: EdgeInsets.only(left: 20.0, right: 20.0),
-//         children: [
-//           Image(
-//             image: AssetImage('assets/logoo1.png'),
-//             fit: BoxFit.fitHeight,
-//             height: 300.0,
-//           ),
-//           Text(
-//             'Sign in',
-//             style: TextStyle(fontSize: 30.0, color: Colors.green[900]),
-//           ),
-//           Text(
-//             'Sign in using your phone number',
-//             style: TextStyle(fontSize: 17.0, color: Colors.green[600]),
-//           ),
-//           Container(
-//             width: 250.0,
-//             margin: EdgeInsets.only(top: 15.0),
-//             child: TextFormField(
-//               controller: phoneController,
-//               keyboardType: TextInputType.phone,
-//               decoration: InputDecoration(
-//                 prefixIcon: Icon(Icons.phone),
-//                 labelText: "Phone Number",
-//                 enabledBorder: OutlineInputBorder(
-//                     borderSide: BorderSide(width: 3, color: Colors.green),
-//                     borderRadius: BorderRadius.circular(20)),
-//                 focusedBorder: OutlineInputBorder(
-//                     borderSide: BorderSide(width: 3, color: Colors.blue),
-//                     borderRadius: BorderRadius.circular(20)),
-//               ),
-//             ),
-//           ),
-//           Container(
-//               margin: EdgeInsets.only(left: 40.0, right: 40.0, top: 15.0),
-//               child: ElevatedButton(
-//                   onPressed: () async {
-//                     String phone_number = "+251" + phoneController.text;
-//                     setState(() {
-//                       showLoading = true;
-//                     });
-//                     await _auth.verifyPhoneNumber(
-//                         phoneNumber: phone_number,
-//                         verificationCompleted: (phoneAuthCredential) async {
-//                           setState(() {
-//                             showLoading = false;
-//                           });
-//                           // signInWithPhoneAuthCredential(phoneAuthCredential);
-//                         },
-//                         verificationFailed: (verificationFailed) async {
-//                           setState(() {
-//                             showLoading = false;
-//                           });
-//                           print(verificationFailed.message);
-//                         },
-//                         codeSent: (verificationId, resendingToken) async {
-//                           setState(() {
-//                             showLoading = false;
-//                             currentState =
-//                                 MobileVerficationState.SHOW_OTP_FORM_STATE;
-//                             this.verificationId = verificationId;
-//                           });
-//                         },
-//                         codeAutoRetrievalTimeout: (verificationId) async {});
-//                   },
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Text('Next'),
-//                       Icon(Icons.navigate_next),
-//                     ],
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                       padding: EdgeInsets.all(10.0),
-//                       primary: Colors.green[800]))),
-//           Container(
-//             alignment: Alignment.center,
-//             child: TextButton(
-//                 onPressed: () {},
-//                 child: Text(
-//                   'Sign in using email',
-//                   style: TextStyle(fontSize: 16.0, color: Colors.blue),
-//                 )),
-//           )
-//         ]);
-//   }
+  getMobileFormWidget(context) {
+    return ListView(
+        padding: EdgeInsets.only(left: 20.0, right: 20.0),
+        children: [
+          Image(
+            image: AssetImage('assets/logoo1.png'),
+            fit: BoxFit.fitHeight,
+            height: 300.0,
+          ),
+          Text(
+            'Sign in',
+            style: TextStyle(fontSize: 30.0, color: Colors.green[900]),
+          ),
+          Text(
+            'Sign in using your phone number',
+            style: TextStyle(fontSize: 17.0, color: Colors.green[600]),
+          ),
+          Container(
+            width: 250.0,
+            margin: EdgeInsets.only(top: 15.0),
+            child: TextFormField(
+              //controller: phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.phone),
+                labelText: "Phone Number",
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 3, color: Colors.green),
+                    borderRadius: BorderRadius.circular(20)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 3, color: Colors.blue),
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.only(left: 40.0, right: 40.0, top: 15.0),
+              child: ElevatedButton(
+                  onPressed: () async {
+                    // String phone_number = "+251" + phoneController.text;
+                    // setState(() {
+                    //   showLoading = true;
+                    // });
+                    // await _auth.verifyPhoneNumber(
+                    //     phoneNumber: phone_number,
+                    //     verificationCompleted: (phoneAuthCredential) async {
+                    //       setState(() {
+                    //         showLoading = false;
+                    //       });
+                    //       // signInWithPhoneAuthCredential(phoneAuthCredential);
+                    //     },
+                    //     verificationFailed: (verificationFailed) async {
+                    //       setState(() {
+                    //         showLoading = false;
+                    //       });
+                    //       print(verificationFailed.message);
+                    //     },
+                    //     codeSent: (verificationId, resendingToken) async {
+                    //       setState(() {
+                    //         showLoading = false;
+                    //         currentState =
+                    //             MobileVerficationState.SHOW_OTP_FORM_STATE;
+                    //         this.verificationId = verificationId;
+                    //       });
+                    //     },
+                    //     codeAutoRetrievalTimeout: (verificationId) async {});
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Next'),
+                      Icon(Icons.navigate_next),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(10.0),
+                      primary: Colors.green[800]))),
+          Container(
+            alignment: Alignment.center,
+            child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Sign in using email',
+                  style: TextStyle(fontSize: 16.0, color: Colors.blue),
+                )),
+          )
+        ]);
+  }
 
 //   otpTextFields(context) {
 //     final node = FocusScope.of(context);
@@ -303,13 +303,15 @@
 //     );
 //   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: getMobileFormWidget(context),
 //         child: showLoading
-//             ? Center(child: CircularProgressIndicator())
-//             : currentState == MobileVerficationState.SHOW_MOBILE_FORM_STATE
+//           ? Center(child: CircularProgressIndicator())
+//            : currentState == MobileVerficationState.SHOW_MOBILE_FORM_STATE
 //                 ? getMobileFormWidget(context)
-//                 : getOtpFormWidget(context));
-//   }
-// }
+//                 : getOtpFormWidget(context)
+    );
+  }
+}
